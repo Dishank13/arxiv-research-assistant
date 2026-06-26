@@ -441,10 +441,6 @@ def page_chat():
                     }
                 )
 
-            except requests.exceptions.ConnectionError:
-                st.error(
-                    "Unable to connect to the search service. "
-                    "Please ensure the backend is running."
             except Exception as e:
                 st.error(f"Something went wrong. Please try again. ({e})")
 
