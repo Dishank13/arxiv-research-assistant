@@ -27,8 +27,6 @@ env/
 # Data files
 data/raw/
 data/chunks/
-data/bm25_index.pkl
-
 # Logs
 *.log
 data/crag_log.jsonl
@@ -39,4 +37,3 @@ Thumbs.db
 desktop.ini
 
 # Misc
-*.pkl
