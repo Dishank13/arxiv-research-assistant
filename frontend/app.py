@@ -6,14 +6,18 @@ import pandas as pd
 import plotly.graph_objects as go
 from datetime import datetime
 import os
+import sys
 import hashlib
+
+# ---------------------------------------------------------------------------
+# Global Config & Path Setup
+# ---------------------------------------------------------------------------
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
 from src.agent import query_agent
 
-# ---------------------------------------------------------------------------
-# Global Config
-# ---------------------------------------------------------------------------
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ABLATION_RESULTS_PATH = os.path.join(PROJECT_ROOT, "eval", "ablation_results.json")
 TEST_QUESTIONS_PATH = os.path.join(PROJECT_ROOT, "eval", "test_questions.json")
 
