@@ -8,10 +8,11 @@ from datetime import datetime
 import os
 import hashlib
 
+from src.agent import query_agent
+
 # ---------------------------------------------------------------------------
 # Global Config
 # ---------------------------------------------------------------------------
-API_URL = "http://localhost:8000"
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ABLATION_RESULTS_PATH = os.path.join(PROJECT_ROOT, "eval", "ablation_results.json")
 TEST_QUESTIONS_PATH = os.path.join(PROJECT_ROOT, "eval", "test_questions.json")
@@ -367,17 +368,14 @@ def page_chat():
         with st.spinner("Searching papers and generating answer..."):
             start_time = time.time()
             try:
-                response = requests.post(
-                    f"{API_URL}/query",
-                    json={
-                        "query": query.strip(),
-                        "session_id": st.session_state.session_id,
-                    },
-                    timeout=120,
-                )
+                # Build chat history format for agent
+                agent_history = []
+                for entry in st.session_state.chat_history:
+                    agent_history.append({"role": "user", "content": entry["query"]})
+                    agent_history.append({"role": "assistant", "content": entry["answer"]})
+
+                data = query_agent(query=query.strip(), chat_history=agent_history)
                 elapsed = time.time() - start_time
-                response.raise_for_status()
-                data = response.json()
 
                 answer = data.get("answer", "No answer returned.")
                 decision = data.get("crag_branch", "")
@@ -447,13 +445,8 @@ def page_chat():
                 st.error(
                     "Unable to connect to the search service. "
                     "Please ensure the backend is running."
-                )
-            except requests.exceptions.Timeout:
-                st.error(
-                    "Request timed out. The server may be busy, please try again."
-                )
-            except Exception as exc:
-                st.error(f"Something went wrong. Please try again. ({exc})")
+            except Exception as e:
+                st.error(f"Something went wrong. Please try again. ({e})")
 
     # Chat history
     if st.session_state.chat_history:
