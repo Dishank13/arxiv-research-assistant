@@ -1,3 +1,11 @@
+---
+title: ArXiv Research Assistant
+emoji: 🔬
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+app_port: 7860
+---
 # ArXiv Research Assistant
 
 An agentic RAG system for querying ML/AI research papers. Combines hybrid retrieval (dense + sparse), corrective grading with web search fallback, cross-encoder reranking, and a LangGraph-powered agent loop with hallucination detection.

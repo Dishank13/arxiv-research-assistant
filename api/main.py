@@ -91,7 +91,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:8501",
         "http://127.0.0.1:8501",
-        "https://your-hf-space-url.hf.space",
+        "https://Dishank13-arxiv-research-assistant.hf.space",
     ],
     allow_credentials=True,
     allow_methods=["GET", "POST"],
