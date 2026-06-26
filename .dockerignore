@@ -1,0 +1,12 @@
+.env
+data/raw/
+data/chunks/
+__pycache__/
+*.pyc
+.git/
+*.log
+.vscode/
+.idea/
+venv/
+.venv/
+*.pkl

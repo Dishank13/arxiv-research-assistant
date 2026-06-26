@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What is the main contribution of the Attention is All You Need paper?",
+    "ground_truth": "The paper introduced the Transformer architecture, which relies entirely on self-attention mechanisms instead of recurrence or convolution for sequence transduction tasks, achieving state-of-the-art results in machine translation."
+  },
+  {
+    "question": "How does RAG differ from fine-tuning for knowledge injection?",
+    "ground_truth": "RAG (Retrieval-Augmented Generation) retrieves relevant documents at inference time to augment the LLM's context, while fine-tuning modifies the model's weights on domain-specific data. RAG is more flexible for updating knowledge without retraining."
+  },
+  {
+    "question": "What improvements did Mistral 7B make over LLaMA?",
+    "ground_truth": "Mistral 7B introduced grouped-query attention (GQA) and sliding window attention (SWA) for faster inference and longer context handling, outperforming LLaMA 2 13B on most benchmarks while being smaller."
+  },
+  {
+    "question": "Explain the key idea behind LoRA",
+    "ground_truth": "LoRA (Low-Rank Adaptation) freezes pre-trained model weights and injects trainable low-rank decomposition matrices into each layer of the Transformer, dramatically reducing the number of trainable parameters for fine-tuning while maintaining model quality."
+  },
+  {
+    "question": "What is RLHF and which paper introduced it?",
+    "ground_truth": "RLHF (Reinforcement Learning from Human Feedback) is a technique where a reward model is trained on human preference data, then used to fine-tune a language model via reinforcement learning. It was popularized by the InstructGPT paper (Training language models to follow instructions with human feedback) by OpenAI."
+  },
+  {
+    "question": "What are the key components of the Vision Transformer (ViT)?",
+    "ground_truth": "The Vision Transformer (ViT) splits an image into fixed-size patches, linearly embeds each patch, adds positional embeddings, and feeds the resulting sequence of vectors into a standard Transformer encoder. A classification token ([CLS]) is prepended to the sequence and its output representation is used for classification. ViT demonstrated that pure Transformers can achieve excellent results on image recognition tasks when pre-trained on large datasets."
+  },
+  {
+    "question": "How does DPO differ from RLHF for alignment?",
+    "ground_truth": "Direct Preference Optimization (DPO) eliminates the need for training a separate reward model and running reinforcement learning. Instead, DPO directly optimizes a language model on preference pairs using a simple classification loss derived from the Bradley-Terry model. This makes DPO simpler, more stable, and computationally cheaper than RLHF while achieving comparable or better alignment performance."
+  },
+  {
+    "question": "What is chain-of-thought prompting?",
+    "ground_truth": "Chain-of-thought (CoT) prompting is a technique where the model is prompted to generate intermediate reasoning steps before arriving at a final answer. Introduced by Wei et al. (2022), it significantly improves performance on arithmetic, commonsense, and symbolic reasoning tasks. CoT can be elicited via few-shot examples that include reasoning chains or by simply appending 'Let's think step by step' to the prompt (zero-shot CoT)."
+  },
+  {
+    "question": "Explain the concept of mixture of experts in language models",
+    "ground_truth": "Mixture of Experts (MoE) is an architecture where a model contains many expert sub-networks, but only a sparse subset of experts is activated for each input token via a gating (router) network. This allows the model to have a very large total parameter count while keeping the computational cost per token constant. Notable examples include the Switch Transformer and Mixtral 8x7B, which demonstrated that MoE models can match or exceed dense model performance at a fraction of the compute cost."
+  },
+  {
+    "question": "What is the difference between BERT and GPT architectures?",
+    "ground_truth": "BERT uses a bidirectional Transformer encoder trained with masked language modeling (MLM), where it predicts randomly masked tokens using both left and right context simultaneously. GPT uses a unidirectional (left-to-right) Transformer decoder trained with causal language modeling, predicting the next token given all previous tokens. BERT excels at understanding tasks like classification and NER, while GPT excels at generation tasks. This fundamental difference in attention masking and training objective defines their complementary strengths."
+  },
+  {
+    "question": "How does contrastive learning work in CLIP?",
+    "ground_truth": "CLIP (Contrastive Language-Image Pre-training) jointly trains an image encoder and a text encoder to maximize the cosine similarity between matched image-text pairs while minimizing similarity for unmatched pairs in a batch. This contrastive objective learns a shared embedding space where images and text with similar semantics are close together. CLIP enables zero-shot transfer to downstream vision tasks by comparing image embeddings with text embeddings of class descriptions."
+  },
+  {
+    "question": "What is instruction tuning and why is it important?",
+    "ground_truth": "Instruction tuning is the process of fine-tuning a pre-trained language model on a diverse collection of tasks formatted as natural language instructions. Papers like FLAN and T0 demonstrated that instruction-tuned models generalize much better to unseen tasks compared to standard language models. It bridges the gap between pre-training and practical use by teaching models to follow user intent, making them more helpful, aligned, and capable of zero-shot task performance."
+  },
+  {
+    "question": "Explain the concept of knowledge distillation in neural networks",
+    "ground_truth": "Knowledge distillation is a model compression technique where a smaller 'student' model is trained to mimic the behavior of a larger 'teacher' model. The student learns from the teacher's soft probability distributions (soft labels) over classes, which contain richer information than hard labels alone. Introduced by Hinton et al. (2015), this technique enables deploying smaller, faster models that retain much of the teacher's performance, and has been widely applied in NLP (e.g., DistilBERT) and computer vision."
+  },
+  {
+    "question": "What is the scaling law for neural language models?",
+    "ground_truth": "Kaplan et al. (2020) from OpenAI discovered that the performance of neural language models follows predictable power-law relationships with respect to model size (number of parameters), dataset size, and compute budget. These scaling laws show that loss decreases smoothly as these factors increase, and that larger models are more sample-efficient. The findings suggest that scaling up model size provides the most efficient path to better performance, given a fixed compute budget."
+  },
+  {
+    "question": "How does flash attention improve transformer efficiency?",
+    "ground_truth": "FlashAttention, introduced by Dao et al. (2022), is an IO-aware exact attention algorithm that reduces memory reads/writes between GPU high-bandwidth memory (HBM) and on-chip SRAM. It uses tiling to compute attention in blocks without materializing the full N×N attention matrix in HBM, reducing memory usage from O(N²) to O(N) and achieving 2-4x wall-clock speedup. Importantly, FlashAttention computes exact attention (not an approximation) while being both faster and more memory-efficient."
+  },
+  {
+    "question": "What is the key innovation in the Diffusion Models for image generation?",
+    "ground_truth": "Diffusion models generate images by learning to reverse a gradual noising process. During training, Gaussian noise is progressively added to images over many timesteps, and a neural network learns to denoise at each step. During generation, the model starts from pure noise and iteratively denoises to produce a clean image. The DDPM paper by Ho et al. (2020) showed that this approach produces high-quality samples, and later work like Stable Diffusion and DALL-E 2 scaled it to produce state-of-the-art text-to-image generation."
+  },
+  {
+    "question": "Explain how Constitutional AI works",
+    "ground_truth": "Constitutional AI (CAI), introduced by Anthropic, is an alignment method that uses a set of written principles (a 'constitution') to guide model behavior. The process has two phases: first, the model critiques and revises its own harmful outputs based on the constitutional principles (supervised learning phase). Second, the revised outputs are used to train a preference model for RLHF, replacing human feedback with AI-generated feedback (RLAIF). This approach reduces the need for human red-teaming while producing models that are both helpful and harmless."
+  },
+  {
+    "question": "What is QLoRA and how does it improve upon LoRA?",
+    "ground_truth": "QLoRA (Quantized LoRA), introduced by Dettmers et al. (2023), combines 4-bit quantization of the base model with LoRA adapters to enable fine-tuning of very large language models on a single GPU. It introduces three key innovations: 4-bit NormalFloat quantization, double quantization to reduce memory footprint, and paged optimizers for memory spike management. QLoRA can fine-tune a 65B parameter model on a single 48GB GPU while matching the performance of full 16-bit fine-tuning."
+  },
+  {
+    "question": "How does retrieval-augmented generation handle hallucination?",
+    "ground_truth": "Retrieval-augmented generation (RAG) mitigates hallucination by grounding the language model's responses in retrieved factual documents rather than relying solely on parametric memory. When a query is received, relevant passages are retrieved from a knowledge base and provided as context to the LLM, constraining it to generate answers supported by the evidence. Advanced RAG systems also incorporate hallucination detection steps, cross-referencing generated claims against source documents and flagging or correcting unsupported statements."
+  },
+  {
+    "question": "What is the difference between autoregressive and masked language models?",
+    "ground_truth": "Autoregressive language models (e.g., GPT) generate text left-to-right, predicting each token conditioned only on previous tokens using causal attention masking. Masked language models (e.g., BERT) are trained by randomly masking tokens in the input and predicting them using bidirectional context from both sides. Autoregressive models are natural for text generation, while masked language models excel at encoding contextual representations for downstream understanding tasks like classification and extraction."
+  },
+  {
+    "question": "Explain the concept of emergent abilities in large language models",
+    "ground_truth": "Emergent abilities are capabilities that appear in large language models only when they reach a certain scale threshold and are not present in smaller models. Documented by Wei et al. (2022), examples include multi-step arithmetic, chain-of-thought reasoning, and word unscrambling, which appear suddenly as model size increases past critical points. This phenomenon suggests that scaling up models can unlock qualitatively new behaviors, though recent work debates whether emergence is a true phase transition or an artifact of evaluation metrics."
+  },
+  {
+    "question": "What are the main findings of the Chinchilla paper on compute-optimal training?",
+    "ground_truth": "The Chinchilla paper (Hoffmann et al., 2022) from DeepMind found that most large language models were significantly undertrained relative to their size. They demonstrated that for a given compute budget, model size and training data should be scaled equally — doubling model size requires doubling training tokens. Their 70B parameter Chinchilla model, trained on 1.4 trillion tokens, outperformed the much larger 280B Gopher model, establishing new guidelines for compute-optimal training."
+  },
+  {
+    "question": "How does the Mamba architecture differ from Transformers?",
+    "ground_truth": "Mamba, introduced by Gu and Dao (2023), is based on selective state space models (SSMs) rather than attention mechanisms. Unlike Transformers which have O(N²) attention complexity, Mamba processes sequences in linear time O(N) by using a recurrent structure with input-dependent selection mechanisms. Mamba achieves comparable or better performance than Transformers of similar size on language modeling tasks while being significantly faster at inference, especially for long sequences, since it avoids the KV-cache bottleneck."
+  },
+  {
+    "question": "What is prefix tuning and how does it relate to prompt tuning?",
+    "ground_truth": "Prefix tuning, introduced by Li and Liang (2021), prepends trainable continuous vectors (prefixes) to the keys and values of every attention layer in a Transformer, keeping the rest of the model frozen. Prompt tuning, proposed by Lester et al. (2021), is a simplified version that only adds trainable tokens to the input embedding layer. Both are parameter-efficient fine-tuning methods that adapt a frozen model by learning small task-specific parameters, but prefix tuning is more expressive since it modifies all layers while prompt tuning only affects the input."
+  },
+  {
+    "question": "Explain the key ideas behind the GPT-4 technical report",
+    "ground_truth": "The GPT-4 technical report (OpenAI, 2023) introduced a large multimodal model capable of processing both text and image inputs to produce text outputs. Key highlights include strong performance on professional and academic benchmarks (e.g., passing the bar exam in the 90th percentile), improved factuality and steerability over GPT-3.5, and extensive safety work including RLHF and red-teaming. The report notably withheld architectural details and training specifics, focusing instead on capability evaluations, limitations, and safety mitigations."
+  }
+]

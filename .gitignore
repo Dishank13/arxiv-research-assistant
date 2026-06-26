@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment & Secrets
+.env
+
+# Data files
+data/raw/
+data/chunks/
+data/bm25_index.pkl
+
+# Logs
+*.log
+data/crag_log.jsonl
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Misc
+*.pkl
